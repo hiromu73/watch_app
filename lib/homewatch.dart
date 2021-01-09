@@ -103,7 +103,7 @@ class _HomeWatchState extends State<HomeWatch> {
         leading: Padding(
           padding: EdgeInsets.all(4.0),
           child: Icon(Icons.settings),
-          onPressed: () {
+          onPressed: () {///なぜ？？？
             Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => NewAlarm(),
