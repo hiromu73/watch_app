@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:watch_app/homewatch.dart';
 import 'header.dart';
 
-
-
 void main() {
   runApp(MyApp());
 }
@@ -16,9 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Quotations Timer',
-      theme: ThemeData(
-        primarySwatch: Colors.black45,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+      theme: new ThemeData.dark(
       ),
       home: HomeWatch(),
     );

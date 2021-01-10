@@ -1,6 +1,6 @@
 
 
-import 'package:async/async.dart';
+// import 'package:async/async.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // import 'package:watch_app/header.dart';
@@ -96,32 +96,39 @@ class _HomeWatchState extends State<HomeWatch> {
     });
   }
 
+
+
+
   @override
   Widget build(BuildContext context) {
      return Scaffold(
         appBar: AppBar(
         leading: Padding(
           padding: EdgeInsets.all(4.0),
-          child: Icon(Icons.settings),
-          onPressed: () {///なぜ？？？
-            Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => NewAlarm(),
-                )
-            );
-          }
+          child: IconButton(
+          icon: Icon(Icons.settings),
+          onPressed:  (){
+            setState(() {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SettingPage(),
+                  ));
+            });
+          }),
         ),
         actions: [
           Padding(
-              padding: EdgeInsets.all(4.0),
-              child: Icon(Icons.add),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SettingPage(),
-                  )
-              );
-            },
+              padding: EdgeInsets.all(15.0),
+              child: IconButton(
+                icon: Icon(Icons.add),
+                onPressed: () {
+                  setState(() {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => NewAlarm(),
+                    ));
+                  });
+            },)
           ),
         ],
         title: Text('QuotationTimer'),
@@ -143,4 +150,3 @@ class _HomeWatchState extends State<HomeWatch> {
       );
   }
 }
-
