@@ -45,65 +45,108 @@ class _SettingPageState extends State<SettingPage> {
           ),
         ],
       ),
-
-      body: Container(
-        padding: EdgeInsets.all(8.0),
-        decoration: BoxDecoration(
-          border: Border(
-            bottom: BorderSide(width: 1.0, color: Colors.grey)
-          ),
-        ),
-        child: Container(
-          padding: EdgeInsets.all(8.0),
-          decoration: BoxDecoration(
-            border: Border(
-                bottom: BorderSide(width: 1.0, color: Colors.grey)
-            ),
-          ),
-          child: Column(
-            children: <Widget>[
-            Container(
-              margin: EdgeInsets.all(10.0),
-              ),
-              Text("開発者のプロフィール",
-                style: TextStyle(color: Colors.white,
-                fontSize: 20.0),
-                ),
-              Text("アプリについてのお問い合わせ",
-                style: TextStyle(color: Colors.white,
-                    fontSize: 20.0),
-              ),
-              Text("開発者のその他のアプリ",
-                style: TextStyle(color: Colors.white,
-                    fontSize: 20.0),
-              ),
-              Text("寄付",
-                style: TextStyle(color: Colors.white,
-                    fontSize: 20.0),
-              ),
-              Text("シェア",
-                style: TextStyle(color: Colors.white,
-                    fontSize: 20.0),
-              ),
-              Text("評価",
-                style: TextStyle(color: Colors.white,
-                    fontSize: 20.0),
-              ),
-              Text("開発者のTwitter",
-                style: TextStyle(color: Colors.white,
-                    fontSize: 20.0),
-              ),
-              Text("開発者のInstagram",
-                style: TextStyle(color: Colors.white,
-                    fontSize: 20.0),
-              ),
-            ],
-          ),
-        )
+      body: ListView(
+        scrollDirection: Axis.vertical,
+        padding: EdgeInsets.all(30.0),
+        shrinkWrap: true,
+        children: listTiles
       )
     );
   }
+  ///各設定繊維を作っていくonTap
+   List<Widget> listTiles =  <Widget>[
+     Container(
+       decoration: new BoxDecoration(
+         border: new Border(
+           bottom: new BorderSide(color: Colors.white.withOpacity(0.3))
+         ),
+       ),
+       child: ListTile(title: Text('開発者のプロフィール',textAlign: TextAlign.left,
+         style: TextStyle(fontSize: 20.0),
+       ),
+     )
+    ),
+     Container(
+         decoration: new BoxDecoration(
+           border: new Border(
+               bottom: new BorderSide(color: Colors.white.withOpacity(0.3))
+           ),
+         ),
+         child: ListTile(title: Text('アプリについてのお問い合わせ',textAlign: TextAlign.left,
+           style: TextStyle(fontSize: 20.0),
+         ),
+         )
+     ),
+     Container(
+         decoration: new BoxDecoration(
+           border: new Border(
+               bottom: new BorderSide(color: Colors.white.withOpacity(0.3))
+           ),
+         ),
+         child: ListTile(title: Text('開発者のその他のアプリ',textAlign: TextAlign.left,
+           style: TextStyle(fontSize: 20.0),
+         ),
+         )
+     ),
+     Container(
+         decoration: new BoxDecoration(
+           border: new Border(
+               bottom: new BorderSide(color: Colors.white.withOpacity(0.3))
+           ),
+         ),
+         child: ListTile(title: Text('寄付',textAlign: TextAlign.left,
+           style: TextStyle(fontSize: 20.0),
+         ),
+         )
+     ),
+     Container(
+         decoration: new BoxDecoration(
+           border: new Border(
+               bottom: new BorderSide(color: Colors.white.withOpacity(0.3))
+           ),
+         ),
+         child: ListTile(title: Text('シェアする',textAlign: TextAlign.left,
+           style: TextStyle(fontSize: 20.0),
+         ),
+         )
+     ),
+     Container(
+         decoration: new BoxDecoration(
+           border: new Border(
+               bottom: new BorderSide(color: Colors.white.withOpacity(0.3))
+           ),
+         ),
+         child: ListTile(title: Text('評価',textAlign: TextAlign.left,
+           style: TextStyle(fontSize: 20.0),
+         ),
+         )
+     ),
+     Container(
+         decoration: new BoxDecoration(
+           border: new Border(
+               bottom: new BorderSide(color: Colors.white.withOpacity(0.3))
+           ),
+         ),
+         child: ListTile(title: Text('開発者のTwitter',textAlign: TextAlign.left,
+           style: TextStyle(fontSize: 20.0),
+         ),
+         )
+     ),
+     Container(
+         decoration: new BoxDecoration(
+           border: new Border(
+               bottom: new BorderSide(color: Colors.white.withOpacity(0.3))
+           ),
+         ),
+         child: ListTile(title: Text('開発者のInstagram',textAlign: TextAlign.left,
+           style: TextStyle(fontSize: 20.0),
+         ),
+         )
+     ),
+  ];
 }
+
+
     //
     // Widget _settinglist(String title) {
     //   return GestureDetector(
