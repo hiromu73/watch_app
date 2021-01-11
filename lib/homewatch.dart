@@ -1,15 +1,15 @@
 
 
-// import 'package:async/async.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// import 'package:watch_app/header.dart';
 
+//作成したWidget//
 import 'route/alarmpage.dart';
 import 'route/newalarm.dart';
 import 'route/quotationspage.dart';
 import 'route/settingpage.dart';
 import 'route/timer.dart';
+////////////////
 
 class HomeWatch extends StatefulWidget {
   HomeWatch({Key key}) : super(key: key);
@@ -23,6 +23,9 @@ class _HomeWatchState extends State<HomeWatch> {
   int _tapIndex = 0;
   final _bottomNavigationBar = <BottomNavigationBarItem>[];
 
+  List<String> _tapList = ["Alarm","Quotations","Timer"];
+  String _selectedItem = "Alarm";
+
   //bottomに表示するアイコン
   static const _bottomIcons = [
     Icons.alarm,
@@ -30,20 +33,20 @@ class _HomeWatchState extends State<HomeWatch> {
     Icons.access_time,
   ];
 
-  ///bottomに表示するアイコンの名前
+  //bottomに表示するアイコンの名前
   static const _bottomIconsNames = [
     'Alarm',
     'Quotations',
     'Timer',
   ];
 
-  ///bottomに表示するアイコンの遷移先
+  //bottomに表示するアイコンの遷移先
   var _routes = [
-    AlarmPage(),///アラーム
-    QuotationsPage(),///格言
-    Timer(),///タイマー
-    NewAlarm(),///新規アラーム
-    SettingPage(),///設定
+    AlarmPage(),
+    QuotationsPage(),
+    Timer(),
+    NewAlarm(),
+    SettingPage(),
   ];
 
   @override
@@ -60,12 +63,12 @@ class _HomeWatchState extends State<HomeWatch> {
     return BottomNavigationBarItem(
       icon: Icon(
         _bottomIcons[index],
-        color: Colors.red,
+        color: Colors.red.withOpacity(0.8),
       ),
       title: Text(
           _bottomIconsNames[index],
         style: TextStyle(
-          color: Colors.red,
+          color: Colors.red.withOpacity(0.8),
         ),
       )
     );
@@ -91,18 +94,16 @@ class _HomeWatchState extends State<HomeWatch> {
   void _onTapIcon(int index) {
     setState(() {
       _bottomNavigationBar[_tapIndex] = _NoneSelectIcons(_tapIndex);
-      _bottomNavigationBar[_tapIndex] = _SelectIcons(_tapIndex);
+      _bottomNavigationBar[index] = _SelectIcons(index);
       _tapIndex = index;
     });
   }
-
-
-
 
   @override
   Widget build(BuildContext context) {
      return Scaffold(
         appBar: AppBar(
+            title: Text("Quotations"),
         leading: Padding(
           padding: EdgeInsets.all(4.0),
           child: IconButton(
@@ -119,20 +120,18 @@ class _HomeWatchState extends State<HomeWatch> {
         actions: [
           Padding(
               padding: EdgeInsets.all(15.0),
-              child: IconButton(
+                child: IconButton(
                 icon: Icon(Icons.add),
                 onPressed: () {
                   setState(() {
                     Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => NewAlarm(),
-                    ));
+                        MaterialPageRoute(builder: (context) => SettingPage(),
+                        ));
                   });
-            },)
-          ),
-        ],
-        title: Text('QuotationTimer'),
-      ),
+                }),
+              ),
+            ]),
       //タップされたインデックスを返す
       body: _routes.elementAt(_tapIndex),
       bottomNavigationBar: BottomNavigationBar(

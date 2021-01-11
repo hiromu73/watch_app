@@ -53,7 +53,7 @@ class _SettingPageState extends State<SettingPage> {
       )
     );
   }
-  ///各設定繊維を作っていくonTap
+  ///各設定遷移先を作っていくonTap
    List<Widget> listTiles =  <Widget>[
      Container(
        decoration: new BoxDecoration(
@@ -75,6 +75,9 @@ class _SettingPageState extends State<SettingPage> {
          child: ListTile(title: Text('アプリについてのお問い合わせ',textAlign: TextAlign.left,
            style: TextStyle(fontSize: 20.0),
          ),
+           onTap: (){
+
+           },
          )
      ),
      Container(
