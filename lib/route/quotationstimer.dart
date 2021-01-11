@@ -33,18 +33,32 @@ class _QuotationsTimerState extends State<QuotationsTimer> {
         children: [
           Center(
             child: Text(_timerString,
-                style: TextStyle(
-                fontSize: 80)),),
-          Container(
-                  width: 100, height: 70, color: Colors.red.withOpacity(0.8),
-                  margin: EdgeInsets.all(10.0),
-                  child: TextButton(
+                style: TextStyle(fontSize: 80)
+            ),
+          ),
+          Row(mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: 100, height: 70, color: Colors.red.withOpacity(0.8),
+                margin: EdgeInsets.all(10.0),
+                child: TextButton(
                     onPressed: _startTimer,
                     child: Text(_isStart ? 'STOP' : 'START',style: TextStyle(
-                      color: Colors.white),
-                      )
-                    ),
-          )
+                        color: Colors.white),
+                    )
+                ),
+              ),
+              Container(
+                width: 100, height: 70, color: Colors.lightBlueAccent.withOpacity(0.8),
+                margin: EdgeInsets.all(10.0),
+                child: TextButton(
+                    onPressed: ,
+                    child: Text("Reset" ,style: TextStyle(
+                        color: Colors.white),
+                    )
+                ),
+              )
+          ],)
         ],
       ),
     );
@@ -66,9 +80,10 @@ void _startTimer() {
 }
 
 @override
-void dispose(){
-    _timer.cancel();
-    super.dispose();
+void resetTimer(){
+    setState(() {
+
+    });
 }
 
   void _onTimer(Timer timer) {
