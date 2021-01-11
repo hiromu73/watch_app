@@ -104,12 +104,6 @@ class _HomeWatchState extends State<HomeWatch> {
   }
 
   //popUpMenuがタップされた時の処理
-  void _onTapActionIcon(int index) {
-    setState(() {
-      _tapActionIcon[index] = _tapList(index);
-      _tapActionIcon = index;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
