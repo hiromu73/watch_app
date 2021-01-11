@@ -8,7 +8,7 @@ import 'route/alarmpage.dart';
 import 'route/newalarm.dart';
 import 'route/quotationspage.dart';
 import 'route/settingpage.dart';
-import 'route/timer.dart';
+import 'route/quotationstimer.dart';
 ////////////////
 
 class HomeWatch extends StatefulWidget {
@@ -48,7 +48,7 @@ class _HomeWatchState extends State<HomeWatch> {
   var _routes = [
     AlarmPage(),
     QuotationsPage(),
-    Timer(),
+    QuotationsTimer(),
     NewAlarm(),
     SettingPage(),
   ];

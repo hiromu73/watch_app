@@ -4,16 +4,16 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:intl/intl.dart';
 
-class Timer extends StatefulWidget {
+class QuotationsTimer extends StatefulWidget {
   @override
-  _TimerState createState() => _TimerState();
+  _QuotationsTimerState createState() => _QuotationsTimerState();
 }
 
-class _TimerState extends State<Timer> {
+class _QuotationsTimerState extends State<QuotationsTimer> {
 
-  void _stopTimer(Timer timer){
-    //格言表示
-  }
+  // void _stopTimer(Timer timer){
+  //   //格言表示
+  // }
 
   //タイマー初期値
   var _timerString = '00:00:00';
@@ -63,6 +63,12 @@ void _startTimer() {
       _timer.cancel();
     }
   });
+}
+
+@override
+void dispose(){
+    _timer.cancel();
+    super.dispose();
 }
 
   void _onTimer(Timer timer) {
