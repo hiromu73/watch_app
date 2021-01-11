@@ -23,6 +23,10 @@ class _HomeWatchState extends State<HomeWatch> {
   int _tapIndex = 0;
   final _bottomNavigationBar = <BottomNavigationBarItem>[];
 
+  //
+  int _tapActionIcon = 0;
+
+
   List<String> _tapList = ["Alarm","Quotations","Timer"];
   String _selectedItem = "Alarm";
 
@@ -90,12 +94,20 @@ class _HomeWatchState extends State<HomeWatch> {
     );
   }
 
-  //Iconをタップされた時の処理
+  //BottomIconをタップされた時の処理
   void _onTapIcon(int index) {
     setState(() {
       _bottomNavigationBar[_tapIndex] = _NoneSelectIcons(_tapIndex);
       _bottomNavigationBar[index] = _SelectIcons(index);
       _tapIndex = index;
+    });
+  }
+
+  //popUpMenuがタップされた時の処理
+  void _onTapActionIcon(int index) {
+    setState(() {
+      _tapActionIcon[index] = _tapList(index);
+      _tapActionIcon = index;
     });
   }
 
