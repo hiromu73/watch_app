@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:intl/intl.dart';
 
 class QuotationsTimer extends StatefulWidget {
   @override
@@ -24,6 +23,7 @@ class _QuotationsTimerState extends State<QuotationsTimer> {
   //ローカルタイマー
   var _timer;
   var _isStart = false;
+  var _stopTimer ;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,8 @@ class _QuotationsTimerState extends State<QuotationsTimer> {
                 margin: EdgeInsets.all(10.0),
                 child: TextButton(
                     onPressed: _startTimer,
-                    child: Text(_isStart ? 'STOP' : 'START',style: TextStyle(
+                    child: Text(_isStart ? 'STOP' : 'START',
+                      style: TextStyle(
                         color: Colors.white),
                     )
                 ),
@@ -52,8 +53,9 @@ class _QuotationsTimerState extends State<QuotationsTimer> {
                 width: 100, height: 70, color: Colors.lightBlueAccent.withOpacity(0.8),
                 margin: EdgeInsets.all(10.0),
                 child: TextButton(
-                    onPressed: ,
-                    child: Text("Reset" ,style: TextStyle(
+                    onPressed: resetTimer,
+                    child: Text("Reset" ,
+                      style: TextStyle(
                         color: Colors.white),
                     )
                 ),
@@ -70,11 +72,17 @@ class _QuotationsTimerState extends State<QuotationsTimer> {
 void _startTimer() {
   setState(() {
     _isStart = !_isStart;
-    if (_isStart) {
+    if ( _isStart ) {
+      //現在の時間
       _startTime = DateTime.now();
+      //1秒後に繰り返し_onTimerを呼び出す
       _timer = Timer.periodic(Duration(seconds: 1), _onTimer);
-    } else {
+    } else {//stop
+      //タイマーを止める
       _timer.cancel();
+      // _stopTimer = _timer;
+      // _timerString = _stopTimer;
+
     }
   });
 }
@@ -82,14 +90,16 @@ void _startTimer() {
 @override
 void resetTimer(){
     setState(() {
-
+      _timerString = '00:00:00';
+      _timer.cancel();
+      _isStart = !_isStart;
     });
 }
 
   void _onTimer(Timer timer) {
     //現在の時刻を取得
     var now = DateTime.now();
-    //開始時刻と比較して差分を取得
+    //開始時刻(now)と_startTimeを比較して差分を取得
     var diff = now.difference(_startTime).inSeconds;
 
     //タイマーロジック
