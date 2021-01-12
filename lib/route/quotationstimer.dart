@@ -106,7 +106,6 @@ void resetTimer(){
         _timer.cancel();
         _timerString = '00:00:00';
       }
-
     });
 }
 

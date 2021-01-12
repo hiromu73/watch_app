@@ -1,5 +1,4 @@
 
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +9,6 @@ import 'route/quotationspage.dart';
 import 'route/settingpage.dart';
 import 'route/quotationstimer.dart';
 ////////////////
-
 class HomeWatch extends StatefulWidget {
   HomeWatch({Key key}) : super(key: key);
 
@@ -65,16 +63,16 @@ class _HomeWatchState extends State<HomeWatch> {
   //押されたアイコン
   BottomNavigationBarItem _SelectIcons(int index) {
     return BottomNavigationBarItem(
-      icon: Icon(
-        _bottomIcons[index],
-        color: Colors.red.withOpacity(0.8),
-      ),
-      title: Text(
-          _bottomIconsNames[index],
-        style: TextStyle(
+        icon: Icon(
+          _bottomIcons[index],
           color: Colors.red.withOpacity(0.8),
         ),
-      )
+        title: Text(
+          _bottomIconsNames[index],
+          style: TextStyle(
+            color: Colors.red.withOpacity(0.8),
+          ),
+        )
     );
   }
 
@@ -107,28 +105,14 @@ class _HomeWatchState extends State<HomeWatch> {
 
   @override
   Widget build(BuildContext context) {
-     return Scaffold(
-        appBar: AppBar(
-            title: Text("Quotations"),
-        leading: Padding(
-          padding: EdgeInsets.all(4.0),
-          child: IconButton(
-          icon: Icon(Icons.settings),
-          onPressed:  (){
-            setState(() {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SettingPage(),
-                  ));
-            });
-          }),
-        ),
-        actions: [
-          Padding(
-              padding: EdgeInsets.all(15.0),
-                child: IconButton(
-                icon: Icon(Icons.add),
-                onPressed: () {
+    return Scaffold(
+      appBar: AppBar(
+          title: Text("Quotations"),
+          leading: Padding(
+            padding: EdgeInsets.all(4.0),
+            child: IconButton(
+                icon: Icon(Icons.settings),
+                onPressed:  (){
                   setState(() {
                     Navigator.push(
                         context,
@@ -136,8 +120,54 @@ class _HomeWatchState extends State<HomeWatch> {
                         ));
                   });
                 }),
-              ),
-            ]),
+          ),
+          actions: [
+            Padding(
+              padding: EdgeInsets.all(15.0),
+              child: IconButton(
+                  icon: Icon(Icons.add),
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                    builder: (_){
+                          return SimpleDialog(
+                            title: Text('NewSetting',textAlign: TextAlign.center),
+                            children: <Widget>[
+                              SimpleDialogOption(
+                                onPressed: () => Navigator.pop(context),
+                                child: Container(
+                                  margin: EdgeInsets.all(10.0),
+                                  child: Container(
+                                      child: Icon(Icons.alarm),
+                                  ),
+                                )
+                              ),
+                              SimpleDialogOption(
+                                onPressed: () => Navigator.pop(context),
+                                child: Text("Quotations",textAlign: TextAlign.center),
+                              ),
+                              SimpleDialogOption(
+                                onPressed: () => Navigator.pop(context),
+                                child: Text("Timer",textAlign: TextAlign.center),
+                              )
+                            ],
+                            // children: <Widget>[
+                            //   // SimpleDialogOption(
+                            //   //   child: Card(
+                            //   //     margin: EdgeInsets.all(10.0),
+                            //   //     child: ListTile(
+                            //   //       leading : Icon(Icons.alarm),
+                            //   //       title: Text("Alarm",style: TextStyle(fontSize: 20.0),),
+                            //   //       onTap: () {},
+                            //   //     ),
+                            //   //   ),
+                            //   )
+                            // ],
+                          );
+                    });
+                  }),
+            ),
+          ]),
       //タップされたインデックスを返す
       body: _routes.elementAt(_tapIndex),
       bottomNavigationBar: BottomNavigationBar(
@@ -151,7 +181,7 @@ class _HomeWatchState extends State<HomeWatch> {
         currentIndex: _tapIndex,
         //タップされた時の処理
         onTap: _onTapIcon,
-        ),
-      );
+      ),
+    );
   }
 }
