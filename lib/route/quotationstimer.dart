@@ -72,27 +72,41 @@ class _QuotationsTimerState extends State<QuotationsTimer> {
 void _startTimer() {
   setState(() {
     _isStart = !_isStart;
-    if ( _isStart ) {
-      //現在の時間
-      _startTime = DateTime.now();
-      //1秒後に繰り返し_onTimerを呼び出す
-      _timer = Timer.periodic(Duration(seconds: 1), _onTimer);
-    } else {//stop
-      //タイマーを止める
-      _timer.cancel();
-      // _stopTimer = _timer;
-      // _timerString = _stopTimer;
-
-    }
+      if ( _isStart ) {
+        //現在の時間
+        _startTime = DateTime.now();
+        //1秒後に繰り返し_onTimerを呼び出す
+        _timer = Timer.periodic(Duration(seconds: 1), _onTimer);
+        // if (_timer = true) {
+        //   // _timer = Timer.periodic(Duration(seconds: 1), _onTimer);
+        // }
+      } else {
+        //タイマーを止める
+        _timer.cancel();
+        // _timer = Timer.periodic(Duration(seconds: 1), _onTimer);
+        // _timer = null;
+        // _isStart = !_isStart;
+        // _stopTimer = _timer;
+        // _timerString = _stopTimer;
+      }
   });
 }
 
 @override
 void resetTimer(){
     setState(() {
-      _timerString = '00:00:00';
       _timer.cancel();
-      _isStart = !_isStart;
+      if (_timer = true) {
+        _timerString = '00:00:00';
+        _isStart = !_isStart;
+        if (_isStart) {
+          _isStart = !_isStart;
+        }
+      } else {
+        _timer.cancel();
+        _timerString = '00:00:00';
+      }
+
     });
 }
 
