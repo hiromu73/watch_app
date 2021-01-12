@@ -1,4 +1,6 @@
 
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -134,7 +136,10 @@ class _HomeWatchState extends State<HomeWatch> {
                             title: Text('NewSetting',textAlign: TextAlign.center),
                             children: <Widget>[
                               SimpleDialogOption(
-                                onPressed: () => Navigator.pop(context),
+                                onPressed: () => Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) => QuotationsPage()
+                                    )
+                                ),
                                 child: Container(
                                   margin: EdgeInsets.all(10.0),
                                   child: Container(
@@ -143,11 +148,17 @@ class _HomeWatchState extends State<HomeWatch> {
                                 )
                               ),
                               SimpleDialogOption(
-                                onPressed: () => Navigator.pop(context),
+                                onPressed: () => Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) => QuotationsPage()
+                                  )
+                                ),
                                 child: Text("Quotations",textAlign: TextAlign.center),
                               ),
                               SimpleDialogOption(
-                                onPressed: () => Navigator.pop(context),
+                                onPressed: () => Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) => QuotationsTimer()
+                                  )
+                                ),
                                 child: Text("Timer",textAlign: TextAlign.center),
                               )
                             ],
