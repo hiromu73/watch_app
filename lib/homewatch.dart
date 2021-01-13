@@ -5,12 +5,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 //作成したWidget//
+import 'newpage/newquotations.dart';
+import 'newpage/newtimer.dart';
 import 'route/alarmpage.dart';
-import 'route/newalarm.dart';
+import 'newpage/newalarm.dart';
 import 'route/quotationspage.dart';
 import 'route/settingpage.dart';
 import 'route/quotationstimer.dart';
 ////////////////
+
 class HomeWatch extends StatefulWidget {
   HomeWatch({Key key}) : super(key: key);
 
@@ -22,10 +25,6 @@ class _HomeWatchState extends State<HomeWatch> {
   //タップされたら色を付け、何が選択されているかわかるようににする
   int _tapIndex = 0;
   final _bottomNavigationBar = <BottomNavigationBarItem>[];
-
-  //
-  int _tapActionIcon = 0;
-
 
   List<String> _tapList = ["Alarm","Quotations","Timer"];
   String _selectedItem = "Alarm";
@@ -44,6 +43,7 @@ class _HomeWatchState extends State<HomeWatch> {
     'Timer',
   ];
 
+
   //bottomに表示するアイコンの遷移先
   var _routes = [
     AlarmPage(),
@@ -52,6 +52,7 @@ class _HomeWatchState extends State<HomeWatch> {
     NewAlarm(),
     SettingPage(),
   ];
+
 
   @override
   void initState() {
@@ -104,7 +105,6 @@ class _HomeWatchState extends State<HomeWatch> {
   }
 
   //popUpMenuがタップされた時の処理
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -137,7 +137,7 @@ class _HomeWatchState extends State<HomeWatch> {
                             children: <Widget>[
                               SimpleDialogOption(
                                 onPressed: () => Navigator.push(context,
-                                    MaterialPageRoute(builder: (context) => QuotationsPage()
+                                    MaterialPageRoute(builder: (context) => NewAlarm()
                                     )
                                 ),
                                 child: Container(
@@ -149,14 +149,14 @@ class _HomeWatchState extends State<HomeWatch> {
                               ),
                               SimpleDialogOption(
                                 onPressed: () => Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) => QuotationsPage()
+                                  MaterialPageRoute(builder: (context) => NewQuotations()
                                   )
                                 ),
                                 child: Text("Quotations",textAlign: TextAlign.center),
                               ),
                               SimpleDialogOption(
                                 onPressed: () => Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) => QuotationsTimer()
+                                  MaterialPageRoute(builder: (context) => NewTimer()
                                   )
                                 ),
                                 child: Text("Timer",textAlign: TextAlign.center),
@@ -179,6 +179,7 @@ class _HomeWatchState extends State<HomeWatch> {
                   }),
             ),
           ]),
+
       //タップされたインデックスを返す
       body: _routes.elementAt(_tapIndex),
       bottomNavigationBar: BottomNavigationBar(

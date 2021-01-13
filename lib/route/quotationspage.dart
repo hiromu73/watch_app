@@ -1,8 +1,6 @@
 
 
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:watch_app/route/quotationswrite.dart';
 
 ///テキストページ
 ///どんな時に⇨格言一覧
