@@ -179,7 +179,6 @@ class _HomeWatchState extends State<HomeWatch> {
                   }),
             ),
           ]),
-
       //タップされたインデックスを返す
       body: _routes.elementAt(_tapIndex),
       bottomNavigationBar: BottomNavigationBar(
