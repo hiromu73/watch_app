@@ -12,6 +12,21 @@ class NewAlarm extends StatefulWidget {
 class _NewAlarmState extends State<NewAlarm> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Center(
+        child: Container(
+        width: 400,
+        height: 200,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: Colors.white.withOpacity(0.2)
+          )
+        ),
+          child: Center(
+            child: Text('aaaaa'),
+          )
+      )
+    ),
+    );
   }
 }

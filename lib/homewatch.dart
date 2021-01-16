@@ -131,33 +131,33 @@ class _HomeWatchState extends State<HomeWatch> {
                   onPressed: () {
                     showDialog(
                         context: context,
-                    builder: (_){
+                        builder: (_){
                           return SimpleDialog(
                             title: Text('NewSetting',textAlign: TextAlign.center),
                             children: <Widget>[
                               SimpleDialogOption(
-                                onPressed: () => Navigator.push(context,
-                                    MaterialPageRoute(builder: (context) => NewAlarm()
-                                    )
-                                ),
-                                child: Container(
-                                  margin: EdgeInsets.all(10.0),
-                                  child: Container(
-                                      child: Icon(Icons.alarm),
+                                  onPressed: () => Navigator.push(context,
+                                      MaterialPageRoute(builder: (context) => NewAlarm()
+                                      )
                                   ),
-                                )
+                                  child: Container(
+                                    margin: EdgeInsets.all(10.0),
+                                    child: Container(
+                                      child: Icon(Icons.alarm),
+                                    ),
+                                  )
                               ),
                               SimpleDialogOption(
                                 onPressed: () => Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) => NewQuotations()
-                                  )
+                                    MaterialPageRoute(builder: (context) => NewQuotations()
+                                    )
                                 ),
                                 child: Text("Quotations",textAlign: TextAlign.center),
                               ),
                               SimpleDialogOption(
                                 onPressed: () => Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) => NewTimer()
-                                  )
+                                    MaterialPageRoute(builder: (context) => NewTimer()
+                                    )
                                 ),
                                 child: Text("Timer",textAlign: TextAlign.center),
                               )
