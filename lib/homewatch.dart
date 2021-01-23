@@ -3,6 +3,8 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:async/async.dart';
+import 'package:intl/intl.dart';
 
 //作成したWidget//
 import 'newpage/newquotations.dart';
@@ -104,6 +106,17 @@ class _HomeWatchState extends State<HomeWatch> {
     });
   }
 
+  TimeOfDay _time = new TimeOfDay.now();
+
+  Future<void> _selectTime(BuildContext context) async {
+    TimeOfDay t = await showTimePicker(
+      context: context,
+      initialTime: _time,
+    );
+    if (t  = null) setState(() => _time = t);
+  }
+
+
   //popUpMenuがタップされた時の処理
   @override
   Widget build(BuildContext context) {
@@ -136,16 +149,14 @@ class _HomeWatchState extends State<HomeWatch> {
                             title: Text('NewSetting',textAlign: TextAlign.center),
                             children: <Widget>[
                               SimpleDialogOption(
-                                  onPressed: () => Navigator.push(context,
-                                      MaterialPageRoute(builder: (context) => NewAlarm()
-                                      )
-                                  ),
+                                  onPressed: ()  {
+                                    _selectTime(context);},
                                   child: Container(
                                     margin: EdgeInsets.all(10.0),
                                     child: Container(
                                       child: Icon(Icons.alarm),
                                     ),
-                                  )
+                                  ),
                               ),
                               SimpleDialogOption(
                                 onPressed: () => Navigator.push(context,
