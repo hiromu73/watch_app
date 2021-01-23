@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 
+import '../homewatch.dart';
+
 
 ///新たにアラームの設定をする画面
 ///時間・格言・音量の設定
@@ -13,20 +15,55 @@ class _NewAlarmState extends State<NewAlarm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Container(
-        width: 400,
-        height: 200,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: Colors.white.withOpacity(0.2)
-          )
-        ),
-          child: Center(
-            child: Text('aaaaa'),
-          )
-      )
-    ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: TextField(
+                style: TextStyle(fontSize: 80),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: 100,
+                  height: 70,
+                  color: Colors.red.withOpacity(0.8),
+                  margin: EdgeInsets.all(10.0),
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeWatch(),
+                      ));
+                    },
+                    child: Text("cancel",
+                      style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: 100,
+                  height: 70,
+                  color: Colors.lightBlueAccent.withOpacity(0.8),
+                  margin: EdgeInsets.all(10.0),
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeWatch(),
+                      ));
+                    },
+                    child: Text("ok",
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white),
+                    ),
+                  ),
+                )
+              ],
+            )
+          ],
+        )
     );
   }
 }
