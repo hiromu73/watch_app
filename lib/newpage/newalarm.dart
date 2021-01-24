@@ -50,14 +50,14 @@ class _NewAlarmState extends State<NewAlarm> {
                   margin: EdgeInsets.all(10.0),
                   child: TextButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeWatch(),
-                      ));
+
                     },
                     child: Text("ok",
                       style: TextStyle(
                           fontSize: 20,
                           color: Colors.white),
                     ),
+
                   ),
                 )
               ],

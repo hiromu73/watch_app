@@ -31,6 +31,8 @@ class _HomeWatchState extends State<HomeWatch> {
   List<String> _tapList = ["Alarm","Quotations","Timer"];
   String _selectedItem = "Alarm";
 
+  // UserDocument userDocument;
+
   //bottomに表示するアイコン
   static const _bottomIcons = [
     Icons.alarm,
@@ -44,7 +46,6 @@ class _HomeWatchState extends State<HomeWatch> {
     'Quotations',
     'Timer',
   ];
-
 
   //bottomに表示するアイコンの遷移先
   var _routes = [

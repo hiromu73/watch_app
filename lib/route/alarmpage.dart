@@ -1,5 +1,8 @@
 
 
+import 'dart:html';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 
@@ -13,7 +16,7 @@ class AlarmPage extends StatefulWidget {
 class _AlarmPageState extends State<AlarmPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Scaffold(
     );
   }
 }

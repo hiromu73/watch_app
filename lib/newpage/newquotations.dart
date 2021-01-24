@@ -12,6 +12,10 @@ class NewQuotations extends StatefulWidget {
 class _NewQuotationsState extends State<NewQuotations> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Column(
+
+      ),
+    );
   }
 }
