@@ -109,6 +109,7 @@ class _HomeWatchState extends State<HomeWatch> {
 
   TimeOfDay _time = new TimeOfDay.now();
 
+  //アラーム設定
   Future<void> _selectTime(BuildContext context) async {
     TimeOfDay t = await showTimePicker(
       context: context,
@@ -160,19 +161,22 @@ class _HomeWatchState extends State<HomeWatch> {
                                   ),
                               ),
                               SimpleDialogOption(
-                                onPressed: () => Navigator.push(context,
-                                    MaterialPageRoute(builder: (context) => NewQuotations()
-                                    )
+                                onPressed: () {
+                                  _selectTime(context);},
+                                child: Container(
+                                  margin: EdgeInsets.all(10.0),
+                                  child: Container(
+                                    child: Icon(Icons.auto_stories),
+                                  ),
                                 ),
-                                child: Text("Quotations",textAlign: TextAlign.center),
                               ),
-                              SimpleDialogOption(
-                                onPressed: () => Navigator.push(context,
-                                    MaterialPageRoute(builder: (context) => NewTimer()
-                                    )
-                                ),
-                                child: Text("Timer",textAlign: TextAlign.center),
-                              )
+                              // SimpleDialogOption(
+                              //   onPressed: () => Navigator.push(context,
+                              //       MaterialPageRoute(builder: (context) => ()
+                              //       )
+                              //   ),
+                              //   child: Text("Timer",textAlign: TextAlign.center),
+                              // )
                             ],
                             // children: <Widget>[
                             //   // SimpleDialogOption(
