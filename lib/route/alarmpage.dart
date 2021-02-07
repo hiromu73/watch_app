@@ -5,6 +5,8 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 
 ///アラームページ
@@ -22,18 +24,46 @@ class _AlarmPageState extends State<AlarmPage> {
   // 日時を指定したフォーマットで指定するためのフォーマッター
   var formatter = new DateFormat('HH:mm');
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        mainAxisAlignment: MainAxisAlignment.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
+              // フォーマッターを使用して指定したフォーマットで日時を表示
+              // format()に渡すのはDate型の値で、String型で返される
               formatter.format(_mydatetime),
               style: Theme.of(context).textTheme.display1,
+            ),
+          ],
+        ),
+      ),
+        floatingActionButton: FloatingActionButton(
+        onPressed: () {
+      DatePicker.showDateTimePicker(
+        context,
+        showTitleActions: true,
+        // onChanged内の処理はDatepickerの選択に応じて毎回呼び出される
+        onChanged: (date) {
+          // print('change $date');
+        },
+        // onConfirm内の処理はDatepickerで選択完了後に呼び出される
+        onConfirm: (date) {
+          setState(() {
+            _mydatetime = date;
+          });
+        },
+        // Datepickerのデフォルトで表示する日時
+        currentTime: DateTime.now(),
+        // localによって色々な言語に対応
+        //  locale: LocaleType.en
+      );
+    },
+    tooltip: 'Datetime',
+    child: Icon(Icons.access_time),
     ),
-    ],
     );
   }
 }
