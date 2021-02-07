@@ -1,6 +1,7 @@
 
 
-import 'dart:html';
+
+// import 'dart:html';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -14,9 +15,25 @@ class AlarmPage extends StatefulWidget {
 }
 
 class _AlarmPageState extends State<AlarmPage> {
+
+  // 選択した日時を格納する変数
+  var _mydatetime = new DateTime.now();
+
+  // 日時を指定したフォーマットで指定するためのフォーマッター
+  var formatter = new DateFormat('HH:mm');
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: Center(
+        mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              formatter.format(_mydatetime),
+              style: Theme.of(context).textTheme.display1,
+    ),
+    ],
     );
   }
 }
