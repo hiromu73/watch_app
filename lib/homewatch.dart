@@ -30,6 +30,12 @@ class _HomeWatchState extends State<HomeWatch> {
 
   List<String> _tapList = ["Alarm","Quotations","Timer"];
   String _selectedItem = "Alarm";
+  
+    // 選択した日時を格納する変数
+  var _mydatetime = new DateTime.now();
+
+  // 日時を指定したフォーマットで指定するためのフォーマッター
+  var formatter = new DateFormat('HH:mm');
 
   // UserDocument userDocument;
 
