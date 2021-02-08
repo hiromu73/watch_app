@@ -1,13 +1,10 @@
-
-
-
 // import 'dart:html';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 ///アラームページ
 ///設定したアラームを縦に並べていく
@@ -40,27 +37,24 @@ class _AlarmPageState extends State<AlarmPage> {
           ],
         ),
       ),
-        floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton(
         onPressed: () {
-      DatePicker.showDateTimePicker(
-        context,
-        showTitleActions: true,
-        // onChanged内の処理はDatepickerの選択に応じて毎回呼び出される
-        onChanged: (date) {
-          // print('change $date');
+          DatePicker.showDateTimePicker(
+            context,
+            showTitleActions: true,
+            // onChanged内の処理はDatepickerの選択に応じて毎回呼び出される
+            onChanged: (date) {
+            // print('change $date');
+            },
+            // onConfirm内の処理はDatepickerで選択完了後に呼び出される
+            onConfirm: (date) {
+              setState(() {
+                _mydatetime = date;
+              });
+            },
+            currentTime: DateTime.now(),
+          );
         },
-        // onConfirm内の処理はDatepickerで選択完了後に呼び出される
-        onConfirm: (date) {
-          setState(() {
-            _mydatetime = date;
-          });
-        },
-        // Datepickerのデフォルトで表示する日時
-        currentTime: DateTime.now(),
-        // localによって色々な言語に対応
-        //  locale: LocaleType.en
-      );
-    },
     tooltip: 'Datetime',
     child: Icon(Icons.access_time),
     ),
